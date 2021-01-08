@@ -36,14 +36,12 @@ steps:
   workingDirectory: src
   displayName: Pack Src
 
-# Upload the NuGet package file to nuget.org
-# Important notes:
-#    For this to work, you need to create a 'service connection' in Azure Pipelines with the same name
-#    as the 'publishFeedCredentials' value, or use the name of one you already have in place.
+# Upload the NuGet package file to a nuget feed
 - task: NuGetCommand@2
-  displayName: Push Src
+  displayName: Push package to feed
   inputs:
-    command: push
+    command: 'push'
     packagesToPush: 'src/bin/Release/*.nupkg'
-    nuGetFeedType: external
-    publishFeedCredentials: 'Blazor Packages'
+    nuGetFeedType: 'internal'
+    publishVstsFeed: 'fb9a5fc3-2f2f-4cd6-b9c5-867cc1302618'
+    allowPackageConflicts: true
