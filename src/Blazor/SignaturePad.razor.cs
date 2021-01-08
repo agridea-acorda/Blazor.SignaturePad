@@ -185,6 +185,14 @@ namespace Mobsites.Blazor
         }
 
         /// <summary>
+        /// Get raw curves data as json
+        /// </summary>
+        public Task<string> ToData() => this.jsRuntime.InvokeAsync<string>(
+                                                "Mobsites.Blazor.SignaturePads.toData",
+                                                Index)
+                                            .AsTask();
+
+        /// <summary>
         /// Get signature as data url according to the supported type.
         /// </summary>
         public Task<string> ToDataURL(SupportedSaveAsTypes? saveAsType = null) => IsWASM
@@ -272,7 +280,16 @@ namespace Mobsites.Blazor
                     this.UseSessionStorageForState);
         }
 
-
+        /// <summary>
+        /// Load signature from json data
+        /// </summary>
+        public async ValueTask LoadSignature(string json)
+        {
+            await this.jsRuntime.InvokeVoidAsync(
+                "Mobsites.Blazor.SignaturePads.loadSignature",
+                Index,
+                json);
+        }
 
         /****************************************************
         *
