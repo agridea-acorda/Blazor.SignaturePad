@@ -6,22 +6,22 @@
     <TargetFramework>netstandard2.0</TargetFramework>
     <RazorLangVersion>3.0</RazorLangVersion>
     <LangVersion>latest</LangVersion>
-    <RootNamespace>Mobsites</RootNamespace>
+    <RootNamespace>Agridea</RootNamespace>
     <SignAssembly>true</SignAssembly>
-    <Company>Mobsites</Company>
-    <Authors>Allan Mobley</Authors>
-    <Copyright>© 2020 Mobsites</Copyright>
-    <Description>A Blazor UI component for smooth signature drawing on a HTML5 canvas.</Description>
-    <PackageId>Mobsites.Blazor.SignaturePad</PackageId>
+    <Company>Agridea</Company>
+    <Authors>Nicolas Destrez</Authors>
+    <Copyright>© 2020 Agridea</Copyright>
+    <Description>A Blazor UI component for smooth signature drawing on a HTML5 canvas, forked from Mobsites/Blazor.SignaturePad</Description>
+    <PackageId>Agridea.Blazor.SignaturePad</PackageId>
     <IsPackable>true</IsPackable>
     <PackageLicenseFile>LICENSE</PackageLicenseFile>
-    <PackageIcon>mobsites-logo.png</PackageIcon>
+    <PackageIcon>agridea-logo.png</PackageIcon>
     <PackageReleaseNotes>Updated platform detection to new value check. Fixed missing default pen color bug when color not set as attribute. Added attribute support for popup modal use cases. Updated dependencies.</PackageReleaseNotes>
-    <PackageVersion>1.1.7</PackageVersion>
+    <PackageVersion>1.1.8</PackageVersion>
     <PackageTags>blazor;component;signature;pad;canvas;</PackageTags>
-    <PackageProjectUrl>https://www.mobsites.com/blazor/signature-pad</PackageProjectUrl>
+    <PackageProjectUrl>https://github.com/agridea-acorda/Blazor.SignaturePad</PackageProjectUrl>
     <RepositoryType>git</RepositoryType>
-    <RepositoryUrl>https://github.com/Mobsites/Blazor.SignaturePad</RepositoryUrl>
+    <RepositoryUrl>https://github.com/agridea-acorda/Blazor.SignaturePad</RepositoryUrl>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
   </PropertyGroup>
 
@@ -30,7 +30,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Include="assets\mobsites-logo.png">
+    <None Include="assets\agridea-logo.png">
       <Pack>True</Pack>
       <PackagePath></PackagePath>
     </None>
