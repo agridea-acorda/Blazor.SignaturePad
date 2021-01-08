@@ -58,6 +58,9 @@ window.Mobsites.Blazor.SignaturePads = {
             });
         }, 300);
     },
+    toData: function(index) {
+        return this.store[index]._toData();
+    },
     toDataURL: function (index, type) {
         return this.store[index]._toDataURL(type);
     },
@@ -96,6 +99,9 @@ window.Mobsites.Blazor.SignaturePads = {
     },
     restoreSignatureState: function (index, key, useSession) {
         this.store[index].restoreSignatureState(key, useSession);
+    },
+    loadSignature: function(index, data) {
+        this.store[index].loadSignature(data);
     }
 }
 
@@ -141,6 +147,9 @@ class Mobsites_Blazor_SignaturePad extends SignaturePad {
     update(options) {
         this.dotNetObjOptions = options;
         this.penColor = options.color ? options.color : 'black';
+    }
+    _toData() {
+        return JSON.stringify(this.toData());
     }
     _toDataURL(type) {
         var dataURL = null;
@@ -233,11 +242,14 @@ class Mobsites_Blazor_SignaturePad extends SignaturePad {
         const data = useSession
             ? sessionStorage.getItem(key)
             : localStorage.getItem(key);
+        loadSignature(data);
+    }
+    loadSignature(data) {
         if (data) {
             const signature = JSON.parse(data);
             // Add current color to end of signature 
             // to correctly set pen color after restoring signature.
-            signature.push({ color: this.dotNetObjOptions.color, points: [{ time: 0, x: 0, y: 0 }] })
+            signature.push({ color: this.dotNetObjOptions.color, points: [{ time: 0, x: 0, y: 0 }] });
             // Restore signature.
             this.fromData(signature);
         }
