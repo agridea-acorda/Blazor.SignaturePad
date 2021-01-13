@@ -219,6 +219,15 @@ namespace Mobsites.Blazor
             .AsTask();
 
         /// <summary>
+        /// Load signature from json data
+        /// </summary>
+        public Task LoadSignature(string json) => this.jsRuntime.InvokeVoidAsync(
+                                                          "Mobsites.Blazor.SignaturePads.toData",
+                                                          Index,
+                                                          json)
+                                                      .AsTask();
+
+        /// <summary>
         /// Change pen color.
         /// </summary>
         public Task ChangePenColor(string color) => this.jsRuntime.InvokeVoidAsync(
@@ -278,17 +287,6 @@ namespace Mobsites.Blazor
                     Index,
                     $"Mobsites.Blazor.{this.GetKey<SignaturePad>()}.DataURL",
                     this.UseSessionStorageForState);
-        }
-
-        /// <summary>
-        /// Load signature from json data
-        /// </summary>
-        public async ValueTask LoadSignature(string json)
-        {
-            await this.jsRuntime.InvokeVoidAsync(
-                "Mobsites.Blazor.SignaturePads.loadSignature",
-                Index,
-                json);
         }
 
         /****************************************************

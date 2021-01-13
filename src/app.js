@@ -245,7 +245,9 @@ class Mobsites_Blazor_SignaturePad extends SignaturePad {
         loadSignature(data);
     }
     loadSignature(data) {
+        console.log('Loading signature...');
         if (data) {
+            console.log('  ... with non-empty signature data...');
             const signature = JSON.parse(data);
             // Add current color to end of signature 
             // to correctly set pen color after restoring signature.
@@ -253,5 +255,6 @@ class Mobsites_Blazor_SignaturePad extends SignaturePad {
             // Restore signature.
             this.fromData(signature);
         }
+        console.log('  Signature succesfully loaded.');
     }
 }
